@@ -1,0 +1,6 @@
+node_modules/
+debug/
+*.original.html
+ll.zip
+
+.env

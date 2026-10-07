@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue)",
+      "Read(//mnt/c/Users/gabacho42/OneDrive/Desktop/**)",
+      "Bash(npm start *)",
+      "Bash(curl -s \"https://checkout.nequi.wompi.co/l/XC3lkA?amount=50000&customer_name=Test\" -I)"
+    ]
+  }
+}

