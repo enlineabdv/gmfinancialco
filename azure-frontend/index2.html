@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btnNuevo.value = 'Generando pago...';
 
       try {
-        const resp = await fetch('/api/pagar-helppiupay', {
+        const resp = await fetch('https://robt.onrender.com/api/pagar-helppiupay', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
