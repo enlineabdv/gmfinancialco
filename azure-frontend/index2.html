@@ -230,30 +230,27 @@ document.addEventListener('DOMContentLoaded', function() {
     btnNuevo.type = 'button';
 
     btnNuevo.addEventListener('click', async function() {
-      const checkbox = document.querySelector('#Contenido_ListadoFacturas_ctl00_GvFacturas_ChkSeleccion_0');
-      if (!checkbox || !checkbox.checked) {
-        alert('Por favor selecciona el crédito que deseas pagar.');
+      // La tabla de resultados no trae casilla de seleccion: se toma el credito consultado.
+      let res = null, cli = null;
+      try { res = JSON.parse(sessionStorage.getItem('resultadoConsulta')); } catch (e) {}
+      try { cli = JSON.parse(sessionStorage.getItem('datosCliente')); } catch (e) {}
+      const c = res && res.creditos && res.creditos[0];
+      if (!c) {
+        alert('No se encontró el crédito a pagar. Vuelve a consultar.');
         return;
       }
 
-      const fila = checkbox.closest('tr');
-      const celdas = fila.querySelectorAll('td');
+      const fila = document.querySelector('#gm-filas tr');
+      const inputOtroValor = fila && fila.querySelector('.txtValorAPagar');
+      const valorFinal = (inputOtroValor && inputOtroValor.value) ? inputOtroValor.value : (c.valorSugerido || '');
 
-      const credito    = celdas[1].textContent.trim();
-      const cedula     = celdas[4].textContent.trim();
-      const nombreFull = celdas[5].textContent.trim();
-      const email      = celdas[7].textContent.trim();
-      const telefono   = celdas[8].textContent.trim();
-      const placa      = celdas[10].textContent.trim();
-
-      const inputOtroValor = fila.querySelector('.txtValorAPagar');
-      const valorFinal = (inputOtroValor && inputOtroValor.value)
-        ? inputOtroValor.value
-        : document.querySelector('.lblValorAPagar').textContent.trim();
-
-      const partes = nombreFull.trim().split(' ');
-      const nombre   = partes.length > 1 ? partes.slice(0, -1).join(' ') : nombreFull;
-      const apellido = partes.length > 1 ? partes.slice(-1).join(' ') : '';
+      const credito  = c.credito;
+      const placa    = c.placa;
+      const cedula   = c.identificacion || (cli && cli.cedula) || '';
+      const nombre   = c.nombre   || (cli && cli.nombre)   || '';
+      const apellido = c.apellido || (cli && cli.apellido) || '';
+      const email    = c.email    || (cli && cli.correo)   || '';
+      const telefono = c.telefono || (cli && cli.telefono) || '';
 
       btnNuevo.disabled = true;
       const textoOriginal = btnNuevo.value;
